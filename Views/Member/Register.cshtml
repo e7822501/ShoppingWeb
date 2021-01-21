@@ -1,0 +1,38 @@
+﻿@model ShoppingWeb.Models.ViewModel.Register
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+
+@using (Html.BeginForm("RegisterSend", "Member", FormMethod.Post )) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Register</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>暱稱: <input type="text" name="name" id="name" /> <br /></tr>
+                    <tr>帳號: <input type="text" name="account" id="account"/> <br/>
+                    <tr>密碼: <input type="text" name="password" id="password" /> <br /></tr>
+                    <tr>請重複輸入密碼: <input type="text" name="repeatPassword" id="repeatPassword" /> <br /></tr>
+                    <tr>性別: <input type="text" name="sex" id="sex" /> <br /></tr>
+                    <tr>Email: <input type="text" name="email" id="email" /> <br /></tr>
+                </table>
+                <input type="submit" value="CreateAccount" class="btn btn-default"/> <br/>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    $(document).ready(()=>{
+
+    });
+}
