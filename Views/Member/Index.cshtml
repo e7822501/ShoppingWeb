@@ -2,7 +2,11 @@
 @{
     ViewBag.Title = "Index";
     var msg = string.Empty;
-    msg = TempData["LoginResult"].ToString();
+    if (TempData["LoginResult"] != null)
+    {
+        msg = TempData["LoginResult"].ToString();
+    }
+
 }
 
 <h2>Login:</h2>
@@ -19,7 +23,8 @@
             <td>@Html.TextBoxFor(x=> x.Password)</td>
         </tr>
         <tr>
-            <td><input type="submit" value="Submit" /></td>
+            <td><input type="submit" value="Submit" /></td> <br />
+            <td><input type="button" value="註冊" onclick="openRegisterPage()"/>
         </tr>
     </table>
 }
@@ -28,6 +33,10 @@
         var msg = '@msg';
         if (msg) {
             alert(msg);
+        }
+
+        function openRegisterPage() {
+            window.location.href = getRootPath() + "/Member/Register";
         }
     </script>
 }

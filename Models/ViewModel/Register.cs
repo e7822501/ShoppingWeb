@@ -15,6 +15,8 @@ namespace ShoppingWeb.Models.ViewModel
         public string Password { get; set; }
         public string RepeatPassword { get; set; }
         public string Sex { get; set; }
+        public string Village { get; }
+        public string Address { get; set; }
         public string Email { get; set; }
     }
 }

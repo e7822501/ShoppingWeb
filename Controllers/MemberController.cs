@@ -13,19 +13,21 @@ namespace ShoppingWeb.Controllers
         // GET: Member
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         [HttpGet]
         public ActionResult Register()
         {
+            var jCity = GetCity();
+            TempData["CityList"] = "";
             return View("Register");
         }
 
         [HttpPost]
         public ActionResult RegisterSend(Register model)
         {
-            return View("Done");
+            return View();
         }
 
         [HttpPost]
@@ -36,9 +38,26 @@ namespace ShoppingWeb.Controllers
                 TempData["LoginResult"] = "LoginFailed";
                 return View("Index");
             }
-
-            TempData["LogindResult"] = "LoginSuccess";
+            TempData["LoginResult"] = "LoginSuccess";
+            Session["account"] = model.Account;
             return View("Index");
+        }
+
+        [HttpGet]
+        public void Logout()
+        {
+            var id = Convert.ToInt32(HttpContext.Request.QueryString["id"]);
+            if (id == 1)
+            {
+                Session.Remove("account");
+            }
+        }
+
+
+        [NonAction]
+        private string GetCity()
+        {
+            return ""; 
         }
 
         [NonAction]

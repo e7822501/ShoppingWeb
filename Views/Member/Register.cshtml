@@ -17,14 +17,35 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <table>
-                    <tr>暱稱: <input type="text" name="name" id="name" /> <br /></tr>
-                    <tr>帳號: <input type="text" name="account" id="account"/> <br/>
-                    <tr>密碼: <input type="text" name="password" id="password" /> <br /></tr>
-                    <tr>請重複輸入密碼: <input type="text" name="repeatPassword" id="repeatPassword" /> <br /></tr>
-                    <tr>性別: <input type="text" name="sex" id="sex" /> <br /></tr>
-                    <tr>Email: <input type="text" name="email" id="email" /> <br /></tr>
+                    <tr>
+                        <td>暱稱:</td>
+                        <td><input type="text" name="name" id="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>帳號:</td>
+                        <td><input type="text" name="account" id="account" /></td>
+                    </tr>
+                    <tr>
+                        <td>密碼: </td>
+                        <td><input type="text" name="password" id="password"/></td>
+                    </tr>
+                    <tr>
+                        <td>請重複輸入密碼:</td>
+                        <td><input type="text" name="repeatPassword" id="repeatPassword"/></td>
+                    </tr>
+                    <tr>
+                        <td>性別: </td>
+                        <td><input type="text" name="sex" id="sex"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td><input type="text" name="email" id="email"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="CreateAccount" class="btn btn-primary" /></td>
+                        <td><input type="button" value="Cancel" class="btn btn-block" onclick="backToLogin()"/></td>
+                    </tr>
                 </table>
-                <input type="submit" value="CreateAccount" class="btn btn-default"/> <br/>
             </div>
         </div>
     </div>
@@ -32,7 +53,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    $(document).ready(()=>{
+    <script>
+        $(document).ready(() => {
 
-    });
+        });
+
+        function backToLogin() {
+            location.href = getRootPath() + "/Member/Index";
+        }
+    </script>
 }
