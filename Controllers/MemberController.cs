@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using ShoppingWeb.Models.ViewModel;
 
 namespace ShoppingWeb.Controllers
@@ -40,17 +42,20 @@ namespace ShoppingWeb.Controllers
             }
             TempData["LoginResult"] = "LoginSuccess";
             Session["account"] = model.Account;
+            var foo = JsonConvert.SerializeObject(HttpContext.Request.Cookies["ASP.NET_SessionId"]);
+            Debug.WriteLine(foo);
             return View("Index");
         }
 
         [HttpGet]
-        public void Logout()
+        public ActionResult Logout(int id)
         {
-            var id = Convert.ToInt32(HttpContext.Request.QueryString["id"]);
             if (id == 1)
             {
                 Session.Remove("account");
             }
+
+            return RedirectToAction("Index", "Home");
         }
 
 
