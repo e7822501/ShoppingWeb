@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using ShoppingWeb.Models.ViewModel;
@@ -42,8 +43,6 @@ namespace ShoppingWeb.Controllers
             }
             TempData["LoginResult"] = "LoginSuccess";
             Session["account"] = model.Account;
-            var foo = JsonConvert.SerializeObject(HttpContext.Request.Cookies["ASP.NET_SessionId"]);
-            Debug.WriteLine(foo);
             return View("Index");
         }
 
@@ -54,7 +53,6 @@ namespace ShoppingWeb.Controllers
             {
                 Session.Remove("account");
             }
-
             return RedirectToAction("Index", "Home");
         }
 

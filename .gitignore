@@ -1,0 +1,12 @@
+!.gitignore
+*.vs
+*.user
+*.suo
+*.log 
+[Pp]ackages
+[Bb]in
+[Oo]bj
+[Ll]og
+.vs
+bin
+obj
