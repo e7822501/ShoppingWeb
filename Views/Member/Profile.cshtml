@@ -1,0 +1,9 @@
+﻿<div>
+    <h2>Member 個人資料</h2>
+    @{
+        if (Session["Account"] != null)
+        {
+            @Session["Account"].ToString()
+        }
+    }
+</div>

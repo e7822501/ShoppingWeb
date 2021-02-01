@@ -16,6 +16,10 @@ namespace ShoppingWeb.Controllers
         // GET: Member
         public ActionResult Index()
         {
+            if (Session["account"] != null) 
+            {
+                return Redirect("~/Member/Profile");
+            }
             return View("Index");
         }
 
@@ -53,9 +57,18 @@ namespace ShoppingWeb.Controllers
             {
                 Session.Remove("account");
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Member");
         }
 
+        [HttpGet]
+        public ActionResult Profile() 
+        {
+            if (Session["account"] == null) 
+            {
+                RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
 
         [NonAction]
         private string GetCity()
