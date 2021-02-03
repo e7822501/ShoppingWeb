@@ -20,7 +20,7 @@ namespace ShoppingWeb.Controllers
             {
                 return Redirect("~/Member/Profile");
             }
-            return View("Index");
+            return View();
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace ShoppingWeb.Controllers
             }
             TempData["LoginResult"] = "LoginSuccess";
             Session["account"] = model.Account;
-            return View("Index");
+            return View("Profile");
         }
 
         [HttpGet]
