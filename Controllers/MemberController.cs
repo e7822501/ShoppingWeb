@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
@@ -26,8 +27,6 @@ namespace ShoppingWeb.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            var jCity = GetCity();
-            TempData["CityList"] = "";
             return View("Register");
         }
 
@@ -71,12 +70,6 @@ namespace ShoppingWeb.Controllers
         }
 
         [NonAction]
-        private string GetCity()
-        {
-            return ""; 
-        }
-
-        [NonAction]
         private bool ValidLogin(Login model)
         {
             var loginModel = new Login()
@@ -84,6 +77,7 @@ namespace ShoppingWeb.Controllers
                 Account = "testJeff",
                 Password = "1qaz@WSX"
             };
+
             if (loginModel.Account != model.Account)
             {
                 return false;
